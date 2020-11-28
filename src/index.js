@@ -47,7 +47,7 @@ const markmapPlugin = (md) => {
     if (token.info === 'mindmap') {
       try {
       	// 1. transform markdown
-      	const { root, features } = transform(markdown);
+      	const { root, features } = transform(token.content.trim());
       	// 2. get assets
       	// get all possible assets that could be used later
       	const { styles, scripts } = getAssets(features);
