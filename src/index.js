@@ -34,7 +34,7 @@
  *
  */
 
-import { transform, getUsedAssets, getAssets } from 'markmap-lib/dist/transform';
+import { transform, getUsedAssets, getAssets } from 'markmap-lib';
 
 const markmapPlugin = (md) => {
 
