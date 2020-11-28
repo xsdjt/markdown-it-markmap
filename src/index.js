@@ -34,7 +34,7 @@
  *
  */
 
-import { transform } from 'markmap-lib/dist/transform';
+import { transform, getUsedAssets, getAssets } from 'markmap-lib/dist/transform';
 
 const markmapPlugin = (md) => {
 
@@ -46,9 +46,12 @@ const markmapPlugin = (md) => {
 
     if (token.info === 'mindmap') {
       try {
-        const data = transform(token.content.trim());
-        return `<svg class="markmap-svg">${JSON.stringify(data)}</svg>`;
-
+      	// 1. transform markdown
+      	const { root, features } = transform(markdown);
+      	// 2. get assets
+      	// get all possible assets that could be used later
+      	const { styles, scripts } = getAssets(features);
+      	return `<svg class="markmap-svg">${JSON.stringify(root)}</svg>`;
       } catch (ex) {
         return `<pre>${ex}</pre>`
       }

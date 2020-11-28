@@ -29,6 +29,7 @@
     "rollup": "^2.8.2"
   },
   "dependencies": {
-    "markmap-lib": "^0.7.4"
+    "markmap-lib": "^0.10.1",
+    "markmap-view": "^0.1.1"
   }
 }
