@@ -50,7 +50,7 @@ const markmapPlugin = (md) => {
       	const { root, features } = transform(token.content.trim());
       	// 2. get assets
       	// get all possible assets that could be used later
-      	const { styles, scripts } = getAssets(features);
+      	const { styles, scripts } = getAssets();
       	return `<svg class="markmap-svg">${JSON.stringify(root)}</svg>`;
       } catch (ex) {
         return `<pre>${ex}</pre>`
