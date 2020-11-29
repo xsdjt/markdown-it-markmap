@@ -44,13 +44,19 @@ const markmapPlugin = (md) => {
 
     const token = tokens[idx];
 
-    if (token.info === 'mindmap') {
+    if (token.info === 'markmap') {
       try {
+	var content = token.content.trim()
+	var style = 'style="width=800px; height=600px"'
+	if (content.startsWith('style=')) {
+		style = content.substring(0, content.search('\n'))
+		content = content.substr(content.search('\n') + 1)
+	}
       	// 1. transform markdown
-      	const { root, features } = transform(token.content.trim());
+      	const { root, features } = transform(content);
       	// 2. get assets
       	const { styles, scripts } = getAssets();
-      	return `<svg class="markmap-svg">${JSON.stringify({"root": root, "styles": styles, "scripts": scripts})}</svg>`;
+      	return `<svg class="markmap-svg" ${style}>${JSON.stringify({"root": root, "styles": styles, "scripts": scripts})}</svg>`;
       } catch (ex) {
         return `<pre>${ex}</pre>`
       }
