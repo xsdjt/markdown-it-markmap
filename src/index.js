@@ -34,10 +34,11 @@
  *
  */
 
-import { transform, getUsedAssets, getAssets } from 'markmap-lib';
+import { Transformer } from 'markmap-lib';
 
-// 1. transform markdown
-// const { root, features } = transform(markdown);
+const transformer = new Transformer();
+
+const {Base64} = require('js-base64');
 
 const markmapPlugin = (md) => {
 
@@ -64,8 +65,17 @@ const markmapPlugin = (md) => {
  
     if (token.info === 'mindmap') {
       try {
-        const data = transform(token.content.trim());
-        return `<svg class="markmap-svg">${JSON.stringify(data)}</svg>`;
+        // const data = transformer.transform(token.content.trim());
+        // return `<svg class="markmap-svg">${JSON.stringify(data)}</svg>`;
+
+        // var data = new Buffer(token.content.trim()).toString('base64');
+
+        //开源https://github.com/dankogai/js-base64
+        // console.log(token.content);
+        var data = Base64.encode(token.content.trim(), true);
+
+        return `<svg class="markmap-svg">${data}</svg>`;
+
 
       } catch (ex) {
         return `<pre>${ex}</pre>`
