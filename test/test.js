@@ -62,9 +62,14 @@ let mindmapContent3 = `
 # root
 \`\`\``;
 
-let mindmapContentResult1 = `<svg class="markmap-svg">{"t":"heading","d":1,"v":"root","c":[{"t":"heading","d":2,"v":"child1","c":[{"t":"list_item","d":3,"v":"child1"}]},{"t":"heading","d":2,"v":"child2","c":[{"t":"list_item","d":3,"v":"child1"}]}]}</svg>`;
-let mindmapContentResult2 = `<svg class="markmap-svg">{"t":"heading","d":1,"v":"root","c":[{"t":"list_item","d":2,"v":"child1"},{"t":"list_item","d":2,"v":"child2"}]}</svg>`;
-let mindmapContentResult3 = `<svg class="markmap-svg">{"t":"heading","d":1,"v":"root"}</svg>`;
+// let mindmapContentResult1 = `<svg class="markmap-svg">{"t":"heading","d":1,"v":"root","c":[{"t":"heading","d":2,"v":"child1","c":[{"t":"list_item","d":3,"v":"child1"}]},{"t":"heading","d":2,"v":"child2","c":[{"t":"list_item","d":3,"v":"child1"}]}]}</svg>`;
+// let mindmapContentResult2 = `<svg class="markmap-svg">{"t":"heading","d":1,"v":"root","c":[{"t":"list_item","d":2,"v":"child1"},{"t":"list_item","d":2,"v":"child2"}]}</svg>`;
+// let mindmapContentResult3 = `<svg class="markmap-svg">{"t":"heading","d":1,"v":"root"}</svg>`;
+
+let mindmapContentResult1 = `<svg class="markmap-svg">{"root":{"t":"heading","d":1,"p":{},"v":"root","c":[{"t":"heading","d":2,"p":{},"v":"child1","c":[{"t":"list_item","d":4,"p":{},"v":"child1"}]},{"t":"heading","d":2,"p":{},"v":"child2","c":[{"t":"list_item","d":4,"p":{},"v":"child1"}]}]},"features":{}}</svg>`;
+let mindmapContentResult2 = `<svg class="markmap-svg">{"root":{"t":"heading","d":1,"p":{},"v":"root","c":[{"t":"list_item","d":3,"p":{},"v":"child1"},{"t":"list_item","d":3,"p":{},"v":"child2"}]},"features":{}}</svg>`;
+let mindmapContentResult3 = `<svg class="markmap-svg">{"root":{"t":"heading","d":1,"p":{},"v":"root"},"features":{}}</svg>`;
+
 
 assert.equal(mdi.render(mindmapContent1), mindmapContentResult1);
 assert.equal(mdi.render(mindmapContent2), mindmapContentResult2);

@@ -34,6 +34,11 @@
  *
  */
 
+import { transform, getUsedAssets, getAssets } from 'markmap-lib';
+
+// 1. transform markdown
+// const { root, features } = transform(markdown);
+
 const markmapPlugin = (md) => {
 
   const temp = md.renderer.rules.fence.bind(md.renderer.rules);
@@ -42,15 +47,26 @@ const markmapPlugin = (md) => {
 
     const token = tokens[idx];
 
-    if (token.info === 'markmap') {
+ //    if (token.info === 'markmap') {
+ //      try {
+	// var content = token.content.trim()
+	// var style = 'style="width=1000px; height=600px"'
+	// if (content.startsWith('style=')) {
+	// 	style = content.substring(0, content.search('\n'))
+	// 	content = content.substr(content.search('\n') + 1)
+	// }
+ //        return `<svg class="markmap-svg" ${style}>${content}</svg>`;
+ //      } catch (ex) {
+ //        return `<pre>${ex}</pre>`
+ //      }
+ //    }
+
+ 
+    if (token.info === 'mindmap') {
       try {
-	var content = token.content.trim()
-	var style = 'style="width=1000px; height=600px"'
-	if (content.startsWith('style=')) {
-		style = content.substring(0, content.search('\n'))
-		content = content.substr(content.search('\n') + 1)
-	}
-        return `<svg class="markmap-svg" ${style}>${content}</svg>`;
+        const data = transform(token.content.trim());
+        return `<svg class="markmap-svg">${JSON.stringify(data)}</svg>`;
+
       } catch (ex) {
         return `<pre>${ex}</pre>`
       }

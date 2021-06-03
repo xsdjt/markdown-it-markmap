@@ -7,5 +7,5 @@ export default {
     name: 'markdown-it-markmap',
     sourcemap: true,
   },
-  external: ['markmap-lib/dist/transform']
+  external: ['markmap-lib']
 };
